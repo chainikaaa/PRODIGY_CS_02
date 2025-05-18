@@ -1,0 +1,14 @@
+PS C:\Users\chain\OneDrive\Desktop\cyber security\image encryption and decry tool> python img.py
+=== Image Encryption/Decryption Tool ===
+Type 'e' to encrypt or 'd' to decrypt: e
+Enter the path to the image file: you.jpg
+Enter an encryption key (0-255): 123
+Enter the output path for the encrypted/decrypted image: encrypted_image1.jpg
+Image successfully saved to encrypted_image1.jpg
+PS C:\Users\chain\OneDrive\Desktop\cyber security\image encryption and decry tool> python img.py
+=== Image Encryption/Decryption Tool ===
+Type 'e' to encrypt or 'd' to decrypt: d
+Enter the path to the image file: you.jpg
+Enter an encryption key (0-255): 123
+Enter the output path for the encrypted/decrypted image: decrypted_image1.jpg
+Image successfully saved to decrypted_image1.jpg
