@@ -1,0 +1,50 @@
+from PIL import Image
+import os
+
+def encrypt_decrypt_image(input_path, output_path, key):
+    try:
+        # Open the image
+        image = Image.open(input_path)
+        image = image.convert("RGB")  # Ensure it's in RGB mode
+        pixels = image.load()
+
+        # Encrypt/Decrypt pixels
+        for y in range(image.height):
+            for x in range(image.width):
+                r, g, b = pixels[x, y]
+                # Apply XOR with the key to each RGB component
+                pixels[x, y] = (r ^ key, g ^ key, b ^ key)
+
+        # Save the result
+        image.save(output_path)
+        print(f"Image successfully saved to {output_path}")
+
+    except Exception as e:
+        print(f"Error processing image: {e}")
+
+def main():
+    print("=== Image Encryption/Decryption Tool ===")
+    mode = input("Type 'e' to encrypt or 'd' to decrypt: ").strip().lower()
+
+    if mode not in ['e', 'd']:
+        print("Invalid option. Choose 'e' or 'd'.")
+        return
+
+    input_path = input("Enter the path to the image file: ").strip()
+    if not os.path.isfile(input_path):
+        print("Invalid file path.")
+        return
+
+    try:
+        key = int(input("Enter an encryption key (0-255): "))
+        if not (0 <= key <= 255):
+            raise ValueError
+    except ValueError:
+        print("Invalid key. It must be an integer between 0 and 255.")
+        return
+
+    output_path = input("Enter the output path for the encrypted/decrypted image: ").strip()
+    encrypt_decrypt_image(input_path, output_path, key)
+
+if __name__ == "__main__":
+    main()
